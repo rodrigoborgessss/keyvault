@@ -13,7 +13,7 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 
-const HOST = '127.0.0.1';
+const HOST = process.env.HOST || '127.0.0.1'
 const PORT = process.env.PORT || 7700;
 const PUBLIC_DIR = path.join(__dirname, 'public');
 const DATA_DIR = path.join(__dirname, 'data');
