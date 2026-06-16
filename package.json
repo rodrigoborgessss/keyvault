@@ -1,0 +1,42 @@
+{
+  "name": "keyvault",
+  "version": "2.0.0",
+  "description": "Gestor de passwords local com Argon2id, gerador e verificação de fugas (estilo Have I Been Pwned)",
+  "main": "main.js",
+  "scripts": {
+    "start": "node server.js",
+    "app": "electron .",
+    "dist": "electron-builder --win",
+    "build:argon2": "node build-argon2.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "devDependencies": {
+    "argon2id": "^1.0.1",
+    "esbuild": "^0.25.0",
+    "electron": "^42.4.0",
+    "electron-builder": "^26.0.0"
+  },
+  "build": {
+    "appId": "pt.keyvault.app",
+    "productName": "KeyVault",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "public/**/*"
+    ],
+    "win": {
+      "target": ["nsis", "portable"]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "shortcutName": "KeyVault"
+    }
+  },
+  "private": true
+}
